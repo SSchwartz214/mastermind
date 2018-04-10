@@ -1,7 +1,7 @@
 class Dialogue
 
   def welcome
-    "Welcome to MASTERMIND\n Would you like to (p)lay, read the (i)nstructions, or (q)uit?
+    puts "Welcome to MASTERMIND\n Would you like to (p)lay, read the (i)nstructions, or (q)uit?
     >"
   end
 
@@ -18,3 +18,6 @@ class Dialogue
   end
 
 end
+
+dialogue = Dialogue.new
+puts dialogue.welcome
