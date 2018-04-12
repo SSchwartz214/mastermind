@@ -5,27 +5,36 @@ require './lib/color_generator'
 require 'pry'
 
 class GuessCheckerTest < Minitest::Test
+  def test_set_guess
+    guess_checker = GuessChecker.new
 
-  def test_correct?
-    guess_checker1 = GuessChecker.new("YYYY", "YYYY")
-    guess_checker2 = GuessChecker.new("BYRG", "GGGG")
+    guess_checker.get_guess("rrbb")
 
-    assert guess_checker1.correct?
-    assert guess_checker2.correct?
+    assert_equal ["r","r","b","b"], guess_checker.guess
   end
 
-  def test_give_feedback
-    guess_checker1 = GuessChecker.new("YYYY", "YYYY")
-    guess_checker2 = GuessChecker.new("BYRG", "GGGG")
+  def test_correct_elements
 
-    assert_equal "Correct!", guess_checker1.feedback
-    assert_equal "Incorrect, guess again.", guess_checker2.feedback
+    guess_checker = GuessChecker.new
+    guess_checker.get_guess("rrbb")
+    guess_checker.answer = ["y", "b", "g", "g"]
+
+    assert_equal 1, guess_checker.correct_elements
   end
 
-  # def test_round_has_guess
-  #   guess_checker = GuessChecker.new
-  #
-  #   assert_equal "rrgg", guess_checker.guess("rrgg")
-  # end
+
+  def test_correct_postion
+    guess_checker1 = GuessChecker.new
+    guess_checker1.get_guess("rrbb")
+    guess_checker1.answer = ["y", "b", "g", "g"]
+
+    guess_checker2 = GuessChecker.new
+    guess_checker2.get_guess("ybbb")
+    guess_checker2.answer = ["y", "b", "g", "y"]
+
+
+    assert_equal 0, guess_checker1.correct_positions
+    assert_equal 2, guess_checker2.correct_positions
+  end
 
 end

@@ -5,7 +5,7 @@ class ColorGenerator
   end
 
   def generate_answer
-        @colors.map do |color|
+      @colors.map do |color|
       @colors.sample
     end
   end
