@@ -11,6 +11,13 @@ class Dialogue
     What's your guess?"
   end
 
+  def instuctions
+    puts "A random sequence of 4 colors has been generated.  The object of the
+    game is for you to correctly guess this sequence.  When prompted enter the
+    the first letter of any 4 color sequence.  For example if you want to guess
+    'red, yellow, blue, green' you would enter 'rybg'.  To start, type (p)lay."  
+  end
+
   def end
     puts "Congratulations! You guessed the sequence #{answer} in #{num_guesses} guesses over #{time}.
 
